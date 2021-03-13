@@ -1,0 +1,10 @@
+<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="minus" role="img"
+xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+class="svg-inline--fa fa-minus fa-w-14 fa-7x">
+<path d="M447.5,208.1h-384c-17.7,0-32,14.3-32,32v32c0,17.7,14.3,32,32,32h384c17.7,0,32-14.3,32-32v-32
+C479.5,222.4,465.2,208.1,447.5,208.1z"/>
+<path d="M448,64H64c-17.7,0-32,14.3-32,32v32c0,17.7,14.3,32,32,32h384c17.7,0,32-14.3,32-32V96C480,78.3,465.7,64,448,64z"/>
+<path d="M448,350H64c-17.7,0-32,14.3-32,32v32c0,17.7,14.3,32,32,32h384c17.7,0,32-14.3,32-32v-32C480,364.3,465.7,350,448,350z"/>
+
+</svg>
