@@ -1,0 +1,42 @@
+@mixin transition($attributes: (), $parent-selector: false) {
+
+  $animations: false;
+
+  @each $attribute in $attributes {
+    @if ($animations) {
+      $animations: $animations, $attribute 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)
+    }
+
+    @else {
+      $animations: $attribute 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)
+    }
+  }
+
+  @if $parent-selector {
+    @at-root #{$parent-selector} & {
+      transition: $animations;
+    }
+  }
+
+  @else {
+    & {
+      transition: $animations;
+    }
+  }
+}
+
+@function fixViewHeight($percentage) {
+  @return calc(var(--vh) * #{$percentage});
+}
+
+@mixin mobile {
+  @media screen and (max-width: 62.499375rem) {
+    @content;
+  }
+}
+
+@mixin notMobile {
+  @media screen and (min-width: 62.5rem) {
+    @content;
+  }
+}

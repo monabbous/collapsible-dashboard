@@ -1,37 +1,7 @@
+@import '../../utils/utils';
+
 * {
   box-sizing: border-box;
-}
-
-
-@mixin transition($attributes: (), $parent-selector: false) {
-
-  $animations: false;
-
-  @each $attribute in $attributes {
-    @if ($animations) {
-      $animations: $animations, $attribute 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)
-    }
-
-    @else {
-      $animations: $attribute 0.5s cubic-bezier(0.4, 0.0, 0.2, 1)
-    }
-  }
-
-  @if $parent-selector {
-    @at-root #{$parent-selector} & {
-      transition: $animations;
-    }
-  }
-
-  @else {
-    & {
-      transition: $animations;
-    }
-  }
-}
-
-@function fixViewHeight($percentage) {
-  @return calc(var(--vh) * #{$percentage});
 }
 
 .dashboard-wrapper {
@@ -40,16 +10,19 @@
   display: flex;
   flex-direction: column;
   --progression: 0;
+  --vh: 1vh;
 }
 
 .dashboard-container {
   flex-grow: 1;
+  flex-shrink: 1;
   display: flex;
 }
 
 
 .main {
   flex-grow: 1;
+  flex-shrink: 1;
   height: 100vh;
   height: fixViewHeight(100);
   overflow: auto;
@@ -64,6 +37,7 @@
   height: 100vh;
   height: fixViewHeight(100);
   flex-grow: 1;
+  flex-shrink: 1;
   // overflow-y: auto;
   position: sticky;
   top: 0;
@@ -84,6 +58,7 @@
 
     .side-panel-header-container {
       flex-grow: 1;
+      flex-shrink: 1;
     }
 
 
@@ -144,11 +119,13 @@
   }
 
   .side-panel-content {
-    display: flex;
+    // display: flex;
     // flex-direction: column;
     overflow-y: auto;
     flex-grow: 1;
-    padding: 0.5em;
+    flex-shrink: 1;
+    // padding: 0.5em;
+    width: 100%;
   }
 
   /*
@@ -215,6 +192,7 @@
       button {
         cursor: pointer;
         flex-grow: 1;
+        flex-shrink: 1;
         padding: .75rem 1rem;
         border: 0;
         display: flex;
@@ -336,7 +314,11 @@
 
     @at-root [dir=ltr] & {
       transform: translateX(calc(var(--progression) * -100%));
-    }
+      -webkit-transform: translateX(calc(var(--progression) * -100%));
+      -moz-transform: translateX(calc(var(--progression) * -100%));
+      -ms-transform: translateX(calc(var(--progression) * -100%));
+      -o-transform: translateX(calc(var(--progression) * -100%));
+}
 
     @at-root .dashboard-wrapper:not(.open) {
       --progression: 1;
@@ -381,6 +363,7 @@
       margin: auto;
       padding: 0 0.5rem;
       flex-grow: 1;
+      flex-shrink: 1;
       display: flex;
       justify-content: flex-end;
       max-width: 90vw;

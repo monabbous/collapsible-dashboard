@@ -1,4 +1,4 @@
-import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop, Watch } from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Method, Prop, Watch } from '@stencil/core';
 import { Color } from '../../utils/utils';
 
 @Component({
@@ -26,7 +26,7 @@ export class CollapsibleDashboard {
 
   private dashboardWrapper: HTMLDivElement;
   private sidePanel: HTMLElement;
-  private mobileNav: HTMLElement;
+  // private mobileNav: HTMLElement;
 
 
   @Event() panelCollapse: EventEmitter<boolean>;
@@ -48,8 +48,9 @@ export class CollapsibleDashboard {
   componentDidRender() {
     this.dashboardWrapper = (this.element.shadowRoot ?? this.element).querySelector('.dashboard-wrapper');
     this.sidePanel = (this.element.shadowRoot ?? this.element).querySelector('.side-panel');
-    this.mobileNav = (this.element.shadowRoot ?? this.element).querySelector('.mobile-nav');
+    // this.mobileNav = (this.element.shadowRoot ?? this.element).querySelector('.mobile-nav');
     this.updateCssVariables();
+    this.windowResize();
   }
 
   @Watch('sidePanelBgColor')
@@ -113,6 +114,10 @@ export class CollapsibleDashboard {
     }
   }
 
+  @Method()
+  async getSidePanelBgColorPromise() {
+    return this.getSidePanelBgColor();
+  }
   getSidePanelBgColor() {
     return this.sidePanelBgColor;
   }
@@ -120,10 +125,18 @@ export class CollapsibleDashboard {
     return this.sidePanelBgColorObject.isDark() ? '#efefef' : '#232323';
   }
 
+  @Method()
+  async getSidePanelColorPromise() {
+    return this.getSidePanelColor();
+  }
   getSidePanelColor() {
     return this.sidePanelColor ?? this.getDefaultSidePanelColor();
   }
 
+  @Method()
+  async getMobileNavBgColorPromise() {
+    return this.getMobileNavBgColor();
+  }
   getMobileNavBgColor() {
     return this.mobileNavBgColor;
   }
@@ -131,6 +144,10 @@ export class CollapsibleDashboard {
     return this.mobileNavBgColorObject.isDark() ? '#efefef' : '#232323';
   }
 
+  @Method()
+  async getMobileNavColorPromise() {
+    return this.getMobileNavColor();
+  }
   getMobileNavColor() {
     return this.mobileNavColor ?? this.getDefaultMobileNavColor();
   }
@@ -195,7 +212,7 @@ export class CollapsibleDashboard {
 
   @Listen('resize', {target: 'window', passive: true})
   windowResize() {
-    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.1}px`);
+    this.dashboardWrapper?.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
   }
 
 

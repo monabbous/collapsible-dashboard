@@ -9,6 +9,10 @@ export namespace Components {
     interface CollapsibleDashboard {
         "collapse": boolean;
         "direction": 'rtl' | 'ltr';
+        "getMobileNavBgColorPromise": () => Promise<string>;
+        "getMobileNavColorPromise": () => Promise<string>;
+        "getSidePanelBgColorPromise": () => Promise<string>;
+        "getSidePanelColorPromise": () => Promise<string>;
         "mobileNavBgColor": string;
         "mobileNavColor": string;
         "open": boolean;
@@ -16,6 +20,9 @@ export namespace Components {
         "sidePanelColor": string;
     }
     interface DashboardNav {
+        "active": boolean;
+        "collapsed": boolean;
+        "href": any;
     }
 }
 declare global {
@@ -48,6 +55,9 @@ declare namespace LocalJSX {
         "sidePanelColor"?: string;
     }
     interface DashboardNav {
+        "active"?: boolean;
+        "collapsed"?: boolean;
+        "href"?: any;
     }
     interface IntrinsicElements {
         "collapsible-dashboard": CollapsibleDashboard;
