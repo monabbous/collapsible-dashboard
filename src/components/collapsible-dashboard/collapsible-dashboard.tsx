@@ -168,8 +168,9 @@ export class CollapsibleDashboard {
     if (this.open) {
       return;
     }
+        
     if ((this.touchX >= 20 && this.direction === 'ltr') || (this.touchX <= this.dashboardWrapper.clientWidth - 20 && this.direction === 'rtl')) {
-      this.touchX = null;
+      this.touchX = Infinity;
     }
   }
 

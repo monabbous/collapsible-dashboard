@@ -44,6 +44,7 @@
   .icon {
     color: inherit;
     font-size: 1.25rem;
+    line-height: 1.25rem;
     height: 1.25rem;
     max-height: 1.25rem;
     width: 1.25rem;
@@ -56,6 +57,7 @@
     flex: 1;
     margin: auto 0.5rem;
     overflow: hidden;
+    line-height: 1.25rem;
   }
 
   @include notMobile() {
@@ -64,8 +66,9 @@
       height: 1.625rem;
       max-height: 1.25rem;
       width: 1.625rem;
+      line-height: 1.625rem;
       max-width: 1.25rem;
-      @include transition((font-size, max-width, max-height));
+      @include transition((font-size, max-width, max-height, line-height));
     }
 
     .text {
