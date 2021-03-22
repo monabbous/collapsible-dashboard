@@ -29,14 +29,14 @@ export class CollapsibleDashboard {
   // private mobileNav: HTMLElement;
 
 
-  @Event() panelCollapse: EventEmitter<boolean>;
-  panelCollapseHandler(collapse: boolean) {
-    this.panelCollapse.emit(collapse);
+  @Event() collapseChange: EventEmitter<boolean>;
+  collapseChangeHandler(collapse: boolean) {
+    this.collapseChange.emit(collapse);
   }
 
   @Watch('collapse')
   setCollapse(newVal) {
-    this.panelCollapseHandler(newVal);
+    this.collapseChangeHandler(newVal);
   }
 
   componentWillLoad() {

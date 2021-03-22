@@ -21,6 +21,7 @@ export namespace Components {
     }
     interface DashboardNav {
         "active": boolean;
+        "class": string;
         "collapsed": boolean;
         "href": any;
     }
@@ -49,13 +50,14 @@ declare namespace LocalJSX {
         "direction"?: 'rtl' | 'ltr';
         "mobileNavBgColor"?: string;
         "mobileNavColor"?: string;
-        "onPanelCollapse"?: (event: CustomEvent<boolean>) => void;
+        "onCollapseChange"?: (event: CustomEvent<boolean>) => void;
         "open"?: boolean;
         "sidePanelBgColor"?: string;
         "sidePanelColor"?: string;
     }
     interface DashboardNav {
         "active"?: boolean;
+        "class"?: string;
         "collapsed"?: boolean;
         "href"?: any;
     }

@@ -10,6 +10,7 @@
 | Property    | Attribute   | Description | Type      | Default     |
 | ----------- | ----------- | ----------- | --------- | ----------- |
 | `active`    | `active`    |             | `boolean` | `false`     |
+| `class`     | `class`     |             | `string`  | `''`        |
 | `collapsed` | `collapsed` |             | `boolean` | `false`     |
 | `href`      | `href`      |             | `any`     | `undefined` |
 

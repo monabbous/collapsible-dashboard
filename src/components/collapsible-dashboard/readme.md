@@ -20,9 +20,9 @@
 
 ## Events
 
-| Event           | Description | Type                   |
-| --------------- | ----------- | ---------------------- |
-| `panelCollapse` |             | `CustomEvent<boolean>` |
+| Event            | Description | Type                   |
+| ---------------- | ----------- | ---------------------- |
+| `collapseChange` |             | `CustomEvent<boolean>` |
 
 
 ## Methods
