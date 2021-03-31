@@ -9,21 +9,14 @@ export class DashboardNav {
   @Element() element: HTMLDashboardNavElement;
   dashboard: HTMLCollapsibleDashboardElement;
 
-  private run = 0;
-
   active = false;
-  @Prop({ mutable: true, reflect: true }) class = '';
+  @Prop() class = '';
   @Prop({ mutable: true, reflect: true }) collapsed = false;
   @Prop({ mutable: true, reflect: true }) href;
 
   @Watch('class')
   watchClass(newVal) {
-    const classExist = newVal.split(/\s+/).includes('active');
-    if (!classExist && this.run++ < 1) {
-      return;
-    }
-
-    this.active = classExist;
+    this.active = newVal.split(/\s+/).includes('active');
   }
 
 
@@ -49,6 +42,10 @@ export class DashboardNav {
 
       this.collapsed = this.dashboard.collapse;
     }
+  }
+
+  componentDidRender() {
+    this.watchClass(this.class);
   }
 
   render() {
