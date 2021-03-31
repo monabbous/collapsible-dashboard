@@ -11,7 +11,7 @@ export class DashboardNav {
 
   private run = 0;
 
-  @Prop({ mutable: true, reflect: true }) active = false;
+  active = false;
   @Prop({ mutable: true, reflect: true }) class = '';
   @Prop({ mutable: true, reflect: true }) collapsed = false;
   @Prop({ mutable: true, reflect: true }) href;
@@ -26,26 +26,6 @@ export class DashboardNav {
     this.active = classExist;
   }
 
-  @Watch('active')
-  watchActive(newVal) {
-    const classes = this.class.split(/\s+/).reduce((a, v) => {
-      a[v] = true;
-      return a;
-    }, {});
-    const active = ['true', 'active', true, ''].includes(newVal);
-    if (!active && this.run++ < 1) {
-      return;
-    }
-    if (active) {
-      classes['active'] = true;
-    } else {
-      delete classes['active'];
-    }
-
-    this.class = Object.keys(classes).join(' ');
-
-    console.log(this.class, active);
-  }
 
   componentWillLoad() {
     let dashboard: HTMLElement | HTMLCollapsibleDashboardElement | null = this.element;
@@ -75,12 +55,14 @@ export class DashboardNav {
     return (
       <Host>
         <a href={this.href} class={`wrapper ${this.collapsed ? 'collapsed' : ''} ${this.active ? 'active' : ''}`}>
-          <div class="container">
-            <div class="icon">
-              <slot name="icon"></slot>
+          <div class='container'>
+            <div class='icon'>
+              <div class='icon-container'>
+                <slot name='icon' />
+              </div>
             </div>
-            <div class="text">
-              <slot></slot>
+            <div class='text'>
+              <slot />
             </div>
           </div>
         </a>

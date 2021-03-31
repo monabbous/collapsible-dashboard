@@ -20,7 +20,6 @@ export namespace Components {
         "sidePanelColor": string;
     }
     interface DashboardNav {
-        "active": boolean;
         "class": string;
         "collapsed": boolean;
         "href": any;
@@ -56,7 +55,6 @@ declare namespace LocalJSX {
         "sidePanelColor"?: string;
     }
     interface DashboardNav {
-        "active"?: boolean;
         "class"?: string;
         "collapsed"?: boolean;
         "href"?: any;

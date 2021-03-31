@@ -9,7 +9,7 @@
 }
 
 .wrapper {
-  padding: .75rem (0.875rem + 0.25);
+  margin: 0.25rem;
   white-space: nowrap;
   vertical-align: middle;
   color: inherit;
@@ -25,6 +25,7 @@
     white-space: nowrap;
     color: inherit;
     display: flex;
+    max-width: 100%;
   }
 
   &:hover, &.active {
@@ -33,14 +34,23 @@
   }
 
   &.active > .container {
-    transform-origin: left center;
-    transform: scale(1.05);
-    -webkit-transform: scale(1.05);
-    -moz-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    -o-transform: scale(1.05);
-}
+    .icon::before {
+      content: '\b7';
+      max-width: 0;
+      //height: 100%;
+      font-size: (1.5rem * 3);
+      //margin: auto (-0.2rem * 3);
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      left: (-.6rem * 1.5);
+      right: (-.6rem * 1.5);
+    }
+  }
 
+  .icon, .text {
+    margin: .75rem (0.875rem + 0.25);
+  }
   .icon {
     color: inherit;
     font-size: 1.25rem;
@@ -50,6 +60,10 @@
     width: 1.25rem;
     max-width: 1.25rem;
     text-align: center;
+    .icon-container {
+      display: inline-block;
+      vertical-align: middle;
+    }
   }
 
   .text {
@@ -68,16 +82,14 @@
       width: 1.625rem;
       line-height: 1.625rem;
       max-width: 1.25rem;
-      @include transition((font-size, max-width, max-height, line-height));
+      @include transition((font-size, max-width, max-height, line-height, margin-left, margin-right));
     }
 
     .text {
-      @include transition((flex, filter));
+      @include transition((flex, margin-left, margin-right, filter));
       filter: opacity(1);
       -webkit-filter: opacity(1);
     }
-
-
 
 
     &.collapsed {
@@ -85,9 +97,13 @@
         font-size: 1.625rem;
         max-height: 1.625rem;
         max-width: 1.625rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
       }
 
       .text {
+        margin-left: 0;
+        margin-right: 0;
         flex: 0;
         filter: opacity(0);
         -webkit-filter: opacity(0);
